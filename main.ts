@@ -94,7 +94,7 @@ let buf = Buffer.create(120)
 let variable = scene.createRenderable(zLayer, (image: Image, camera: scene.Camera) => {
     for (let x1 = 0; x1 < 10; x1++) {
         for (let y1 = 0; y1 < 18; y1++) {
-            redrawImg.drawImg(x1 * 20 + (y1 + Math.round(camera.y / 16)) % 2 * 10 - 10 - camera.x % 20, y1 * 8 - 8 - camera.y % 16, list[tileMapImg.getPixel(x1 + Math.round(camera.left / 20), y1 + Math.round(camera.y / 16))], image)
+            redrawImg.drawImg(x1 * 20 + (y1 + Math.round(camera.y / 16)) % 2 * 10 - 10 - camera.x % 20, y1 * 8 - 8 - camera.y % 16, list[tileMapImg.getPixel(x1 + 0, y1 + 0)], image)
         }
     }
     for (let index = 0; index < 160; index++) {
