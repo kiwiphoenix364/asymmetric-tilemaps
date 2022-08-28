@@ -36,14 +36,15 @@ let tile = img`
 `
 let zLayer = 0
 let buf = Buffer.create(120)
-let variable = scene.createRenderable(zLayer, (img: Image, camera: scene.Camera) => {
-    for (let x1 = 0; x1 < 9; x1++) {
-        for (let y1 = 0; y1 < 8; y1++) {
-            redrawImg.drawImg(x1 * 20, y1 * 16, list[tile.getPixel(x1, y1)], img)
-        }
+let img1 = image.create(0,0)
+for (let x1 = 0; x1 < 9; x1++) {
+    for (let y1 = 0; y1 < 8; y1++) {
+        redrawImg.drawImg(x1 * 20, y1 * 16, list[tile.getPixel(x1, y1)], img1)
     }
+}
+let variable = scene.createRenderable(zLayer, (image: Image, camera: scene.Camera) => {
     for (let index = 0; index < 160; index++) {
-    img.setRows(index, buf)
+    image.setRows(index, buf)
     }
 })
 namespace redrawImg {
