@@ -1,5 +1,5 @@
 {
-    "name": "asymmetric-tilemaps",
+    "name": "isometric-tilemaps",
     "description": "",
     "dependencies": {
         "device": "*"
