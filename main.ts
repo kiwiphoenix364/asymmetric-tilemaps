@@ -89,24 +89,12 @@ let mySprite = sprites.create(img`
 controller.moveSprite(mySprite, 50, 50)
 scene.cameraFollowSprite(mySprite)
 mySprite.z = 100
-let xOffset = 0
-let yOffset = 0
 let zLayer = 0
 let buf = Buffer.create(120)
 let variable = scene.createRenderable(zLayer, (image: Image, camera: scene.Camera) => {
     for (let x1 = 0; x1 < 10; x1++) {
-        if (Math.round(mySprite.x / 10) % 2 == 1) {
-            xOffset = 0.5
-        } else {
-            xOffset = 0
-        }
         for (let y1 = 0; y1 < 18; y1++) {
-            if (Math.round(mySprite.y / 8) % 2 == 1) {
-                yOffset = 0.5
-            } else {
-                yOffset = 0
-            }
-            redrawImg.drawImg((x1 + xOffset) * 20 + (y1 + yOffset) % 2 * 10 - 10 - camera.x % 20, Math.round((y1 + yOffset) / 2) * 16 - y1 % 2 * 8 - 8 - camera.y % 16, list[tileMapImg.getPixel((x1 + xOffset) + Math.round(mySprite.x / 16), Math.round((y1 + yOffset) + mySprite.y / 16))], image)
+            redrawImg.drawImg(x1 * 20 + (y1 + Math.round(camera.y / 16)) % 2 * 10 - 10 - camera.x % 20, y1 * 8 - 8 - camera.y % 16, list[tileMapImg.getPixel(x1 + Math.round(camera.x / 20), y1 + Math.round(camera.y / 16))], image)
         }
     }
     for (let index = 0; index < 160; index++) {
