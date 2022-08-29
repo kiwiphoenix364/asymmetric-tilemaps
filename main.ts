@@ -137,21 +137,15 @@ let mySprite = sprites.create(img`
     1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
     1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 `, SpriteKind.Player)
-controller.moveSprite(mySprite, 50, 50)
+controller.moveSprite(mySprite, 20, 20)
 scene.cameraFollowSprite(mySprite)
 mySprite.z = 100
 let zLayer = 0
 let buf = Buffer.create(120)
 let variable = scene.createRenderable(zLayer, (image: Image, camera: scene.Camera) => {
-    if (camera.x < 0) {
-        scene.centerCameraAt(0, camera.y)
-    }
-    if (camera.y < 0) {
-        scene.centerCameraAt(camera.x, 0)
-    }
     for (let x1 = 0; x1 < 10; x1++) {
         for (let y1 = 0; y1 < 18; y1++) {
-            redrawImg.drawImg(x1 * 20 + (y1 + Math.round(camera.top / 16)) % 2 * 10 - 10 - camera.x % 20, y1 * 8 - 8 - camera.top % 16, list[tileMapImg.getPixel(x1 + camera.left / 20, y1 + Math.round(camera.top / 32) * 2)], image)
+            redrawImg.drawImg(x1 * 20 + (y1 + Math.round(camera.top / 16)) % 2 * 10 - 10 - camera.x % 20, y1 * 8 - 8 - camera.top % 8, list[tileMapImg.getPixel(x1 + camera.left / 20, Math.round(y1 + camera.top / 16))], image)
         }
     }
     for (let index = 0; index < 160; index++) {
