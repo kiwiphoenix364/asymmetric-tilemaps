@@ -1,4 +1,6 @@
-let list = [img`
+let zLayer = 0
+let list = [
+img`
     ....................
     ....................
     ....................
@@ -15,7 +17,8 @@ let list = [img`
     ....................
     ....................
     ....................
-`, img`
+    `,
+img`
     .........ee.........
     ........eeee........
     ......eeeeeeee......
@@ -32,7 +35,8 @@ let list = [img`
     ......eeeeeeee......
     ........eeee........
     .........ee.........
-`, img`
+    `,
+img`
     .........77.........
     ........7777........
     ......77777777......
@@ -49,7 +53,8 @@ let list = [img`
     ......77777777......
     ........7777........
     .........77.........
-`, img`
+    `,
+img`
     .........ee.........
     ........eeee........
     ......eeeeeeee......
@@ -66,7 +71,8 @@ let list = [img`
     ......eeeeee66......
     ........eee6........
     .........e6.........
-`, img`
+    `,
+img`
     .........66.........
     ........666e........
     ......6666eeee......
@@ -83,7 +89,8 @@ let list = [img`
     ......eeeeeeee......
     ........eeee........
     .........ee.........
-`, img`
+    `,
+img`
     .........66.........
     ........6666........
     ......66666666......
@@ -100,60 +107,68 @@ let list = [img`
     ......66666666......
     ........6666........
     .........66.........
-`]
+    `
+]
 let tileMapImg = img`
-    2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
-    2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2
-    2 2 5 1 2 2 2 2 2 2 2 1 2 2 2 2
-    2 2 4 1 2 2 2 1 2 2 2 1 2 2 2 2
-    2 2 2 3 1 2 2 1 1 2 2 1 2 2 2 2
-    2 2 2 5 2 2 2 1 2 1 1 2 2 2 2 2
-    2 2 2 2 2 2 2 2 1 1 1 2 2 2 2 2
-    2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2
-    2 1 2 2 2 2 2 2 2 2 1 2 2 2 2 2
-    2 1 1 2 2 2 2 2 2 2 1 2 2 2 2 2
-    2 2 2 1 1 2 2 2 2 1 1 2 2 2 2 2
-    2 2 2 2 2 1 1 1 1 2 2 2 2 2 2 2
-    2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
-    2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
-    2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
-    2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
-`
+    2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+    2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 
+    2 2 5 1 2 2 2 2 2 2 2 1 2 2 2 2 
+    2 2 4 1 2 2 2 1 2 2 2 1 2 2 2 2 
+    2 2 2 3 1 2 2 1 1 2 2 1 2 2 2 2 
+    2 2 2 5 2 2 2 1 2 1 1 2 2 2 2 2 
+    2 2 2 2 2 2 2 2 1 1 1 2 2 2 2 2 
+    2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 
+    2 1 2 2 2 2 2 2 2 2 1 2 2 2 2 2 
+    2 1 1 2 2 2 2 2 2 2 1 2 2 2 2 2 
+    2 2 2 1 1 2 2 2 2 1 1 2 2 2 2 2 
+    2 2 2 2 2 1 1 1 1 2 2 2 2 2 2 2 
+    2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+    2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+    2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+    2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+    `
 let mySprite = sprites.create(img`
-    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-`, SpriteKind.Player)
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+    `, SpriteKind.Player)
 controller.moveSprite(mySprite, 100, 100)
 scene.cameraFollowSprite(mySprite)
 mySprite.z = 100
-let zLayer = 0
 let buf = Buffer.create(120)
+let width = list[0].width
+let height = list[0].height
 let variable = scene.createRenderable(zLayer, (image: Image, camera: scene.Camera) => {
-    if (mySprite.x <= 0) {
-        mySprite.x = 0
+    if (mySprite.x <= -2) {
+        mySprite.x = -2
     }
     if (mySprite.y <= 0) {
         mySprite.y = 0
     }
+    if (mySprite.x >= tileMapImg.width * 20 - 2) {
+        mySprite.x = tileMapImg.width * 20 - 2
+    }
+    if (mySprite.y >= tileMapImg.height * 8) {
+        mySprite.y = tileMapImg.height * 8
+    }
     for (let y1 = 0; y1 < tileMapImg.height; y1++) {
-        if (y1 * 8 < camera.bottom + 16 && y1 * 8 > camera.top - 16) {
+        if (y1 * 8 < camera.bottom + height && y1 * 8 > camera.top - height) {
             for (let x1 = 0; x1 < tileMapImg.width; x1++) {
-                if (x1 * 20 < camera.right + 16 && x1 * 20 > camera.left - 20) {
-                    redrawImg.drawImg(x1 * 20 + (y1 /* + Math.round(camera.top / 16) */) % 2 * 10 - 10 - camera.left, y1 * 8 - 8 - camera.top, list[tileMapImg.getPixel(x1 /* + camera.left / 20 */, y1 /* + Math.round(camera.top / 16) */)], image)
+                if (x1 * width < camera.right + height && x1 * width > camera.left - width) {
+                    redrawImg.drawImg(x1 * width + (y1 /* + Math.round(camera.top / height) */) % 2 * 10 - 10 - camera.left, y1 * 8 - 8 - camera.top, list[tileMapImg.getPixel(x1 /* + camera.left / width */, y1 /* + Math.round(camera.top / height) */)], image)
                 }
             }
         }
@@ -163,8 +178,8 @@ let variable = scene.createRenderable(zLayer, (image: Image, camera: scene.Camer
 })
 namespace redrawImg {
     export function drawImg(x: number, y: number, startImg: Image, targetImg: Image) {
-        for (let xIdx = 0; xIdx < 20; xIdx++) {
-            for (let yIdx = 0; yIdx < 16; yIdx++) {
+        for (let xIdx = 0; xIdx < width; xIdx++) {
+            for (let yIdx = 0; yIdx < height; yIdx++) {
                 if (startImg.getPixel(xIdx, yIdx) != 0) {
                     targetImg.setPixel(x + xIdx, y + yIdx, startImg.getPixel(xIdx, yIdx))
                 }
