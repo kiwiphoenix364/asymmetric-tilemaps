@@ -165,10 +165,10 @@ let variable = scene.createRenderable(zLayer, (image: Image, camera: scene.Camer
         mySprite.y = tileMapImg.height * height / 2
     }
     for (let y1 = 0; y1 < tileMapImg.height; y1++) {
-        if (y1 * height / 2 < camera.bottom + height && y1 * height / 2 > camera.top - height) {
+        if (y1 * Math.idiv(height, 2) < camera.bottom + height && y1 * Math.idiv(height, 2) > camera.top - height) {
             for (let x1 = 0; x1 < tileMapImg.width; x1++) {
                 if (x1 * width < camera.right + height && x1 * width > camera.left - width) {
-                    redrawImg.drawImg(x1 * width + (y1 /* + Math.round(camera.top / height) */) % 2 * width / 2 - width / 2 - camera.left, y1 * height / 2 - height / 2 - camera.top, list[tileMapImg.getPixel(x1 /* + camera.left / width */, y1 /* + Math.round(camera.top / height) */)], image)
+                    redrawImg.drawImg(x1 * width + (y1 /* + Math.round(camera.top / height) */) % 2 * Math.idiv(width, 2) - Math.idiv(width, 2) - camera.left, y1 * Math.idiv(height, 2) - Math.idiv(height, 2) - camera.top, list[tileMapImg.getPixel(x1 /* + camera.left / width */, y1 /* + Math.round(camera.top / height) */)], image)
                 }
             }
         }
