@@ -165,8 +165,8 @@ let variable = scene.createRenderable(zLayer, (image: Image, camera: scene.Camer
         mySprite.y = tileMapImg.height * height / 2
     }
     for (let y1 = 0; y1 < 26; y1++) {
-        if (y1 = 0) {
-            if ((y1 + camera.top / 16) % 2 == 0) {
+        if (y1 == 0) {
+            if (Math.round(y1 + camera.top / 16) % 2 == 0) {
                 y1 = 1
             }
         }
